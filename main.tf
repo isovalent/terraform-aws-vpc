@@ -114,3 +114,32 @@ resource "aws_route_table_association" "additional_public_subnets" {
   subnet_id      = aws_subnet.additional_public_subnets[count.index].id
   route_table_id = module.vpc.public_route_table_ids[0]
 }
+
+resource "tls_private_key" "bastion" {
+  count = var.bastion_host_enabled && var.bastion_host_ssh_public_key == "" ? 1 : 0
+
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "bastion" {
+  count = var.bastion_host_enabled ? 1 : 0
+
+  key_name   = "${var.name}-bastion"
+  public_key = var.bastion_host_ssh_public_key != "" ? var.bastion_host_ssh_public_key : tls_private_key.bastion[0].public_key_openssh
+}
+
+module "bastion" {
+  source  = "cloudposse/ec2-bastion-server/aws"
+  version = "0.30.1"
+
+  associate_public_ip_address = var.bastion_host_assign_public_ip
+  enabled                     = var.bastion_host_enabled
+  key_name                    = aws_key_pair.bastion[0].key_name
+  name                        = "${var.name}-bastion"
+  security_groups             = var.bastion_host_extra_security_groups
+  ssm_enabled                 = true
+  subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
+  tags                        = var.tags
+  vpc_id                      = module.vpc.vpc_id
+}
