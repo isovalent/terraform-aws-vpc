@@ -26,6 +26,22 @@ output "additional_public_subnet_ids" {
   ]
 }
 
+output "bastion_host_private_ip" {
+  value = join("", module.bastion[*].private_ip)
+}
+
+output "bastion_host_public_ip" {
+  value = join("", module.bastion[*].public_ip)
+}
+
+output "bastion_host_security_group_id" {
+  value = join("", module.bastion[*].security_group_id)
+}
+
+output "bastion_host_ssh_user" {
+  value = join("", module.bastion[*].ssh_user)
+}
+
 output "id" {
   description = "The ID of the VPC."
   value       = module.vpc.vpc_id

@@ -44,6 +44,30 @@ variable "additional_public_subnets" {
   }))
 }
 
+variable "bastion_host_assign_public_ip" {
+  default     = false
+  description = "Whether to assign a public IP address to the bastion host."
+  type        = bool
+}
+
+variable "bastion_host_enabled" {
+  default     = false
+  description = "Whether to create an EC2 instance in the VPC that can be used as a bastion host."
+  type        = bool
+}
+
+variable "bastion_host_extra_security_groups" {
+  default     = []
+  description = "A list of extra security groups to associate with the bastion host."
+  type        = list(string)
+}
+
+variable "bastion_host_ssh_public_key" {
+  default     = ""
+  description = "If specified, will be used as the public SSH key for the bastion host."
+  type        = string
+}
+
 variable "cidr" {
   description = "The CIDR to be used for the VPC."
   type        = string
