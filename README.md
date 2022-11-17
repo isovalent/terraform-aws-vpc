@@ -88,6 +88,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="output_public_subnet_ids"></a> [public\_subnet\_ids](#output\_public\_subnet\_ids) | The IDs of the main public subnets that have been created. |
 | <a name="output_vpc_cidr_block"></a> [vpc\_cidr\_block](#output\_vpc\_cidr\_block) | The IPv4 CIDR block that have been used. |
 | <a name="output_vpc_ipv6_cidr_block"></a> [vpc\_ipv6\_cidr\_block](#output\_vpc\_ipv6\_cidr\_block) | The IPv6 CIDR block that have been used. |
+| <a name="output_vpn_gw_id"></a> [vpn\_gw\_id](#output\_vpn\_gw\_id) | The ID of the VPN gateway that has been created. |
 <!-- END_TF_DOCS -->
 
 ## License
