@@ -87,3 +87,8 @@ output "vpc_cidr_block" {
   description = "The IPv4 CIDR block that have been used."
   value       = module.vpc.vpc_cidr_block
 }
+
+output "vpn_gw_id" {
+  description = "The ID of the VPN gateway that has been created."
+  value       = module.vpc.vgw_id
+}
