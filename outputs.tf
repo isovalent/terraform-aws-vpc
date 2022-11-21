@@ -56,3 +56,13 @@ output "public_subnet_ids" {
   description = "The IDs of the main public subnets that have been created."
   value       = module.vpc.public_subnets
 }
+
+output "main_route_table_id" {
+  description = "The ID of the main route table that has been created."
+  value       = module.vpc.vpc_main_route_table_id
+}
+
+output "vpn_gw_id" {
+  description = "The ID of the VPN gateway that has been created."
+  value       = module.vpc.vgw_id
+}
