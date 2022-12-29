@@ -10,6 +10,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.31.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.1.1 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | < 4.0.0 |
 
 ## Providers
 
@@ -17,22 +18,26 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.31.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | >= 3.1.1 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | < 4.0.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.14.4 |
+| <a name="module_bastion"></a> [bastion](#module\_bastion) | cloudposse/ec2-bastion-server/aws | 0.30.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.18.1 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [aws_key_pair.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_route_table_association.additional_private_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_route_table_association.additional_public_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_subnet.additional_private_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_subnet.additional_public_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [null_resource.wait_for_secondary_cidrs](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [tls_private_key.bastion](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 
 ## Inputs
@@ -43,6 +48,10 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_additional_private_subnets"></a> [additional\_private\_subnets](#input\_additional\_private\_subnets) | Additional private subnets to create. | <pre>list(object({<br>    availability_zone = string<br>    cidr              = string<br>    tags              = map(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_additional_public_subnet_tags"></a> [additional\_public\_subnet\_tags](#input\_additional\_public\_subnet\_tags) | Additional tags for the public subnets | `map(string)` | `{}` | no |
 | <a name="input_additional_public_subnets"></a> [additional\_public\_subnets](#input\_additional\_public\_subnets) | Additional public subnets to create. | <pre>list(object({<br>    availability_zone = string<br>    cidr              = string<br>    tags              = map(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_bastion_host_assign_public_ip"></a> [bastion\_host\_assign\_public\_ip](#input\_bastion\_host\_assign\_public\_ip) | Whether to assign a public IP address to the bastion host. | `bool` | `false` | no |
+| <a name="input_bastion_host_enabled"></a> [bastion\_host\_enabled](#input\_bastion\_host\_enabled) | Whether to create an EC2 instance in the VPC that can be used as a bastion host. | `bool` | `false` | no |
+| <a name="input_bastion_host_extra_security_groups"></a> [bastion\_host\_extra\_security\_groups](#input\_bastion\_host\_extra\_security\_groups) | A list of extra security groups to associate with the bastion host. | `list(string)` | `[]` | no |
+| <a name="input_bastion_host_ssh_public_key"></a> [bastion\_host\_ssh\_public\_key](#input\_bastion\_host\_ssh\_public\_key) | If specified, will be used as the public SSH key for the bastion host. | `string` | `""` | no |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR to be used for the VPC. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name of the VPC. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region in which to create the VPC. | `string` | n/a | yes |
@@ -55,6 +64,10 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 |------|-------------|
 | <a name="output_additional_private_subnet_ids"></a> [additional\_private\_subnet\_ids](#output\_additional\_private\_subnet\_ids) | The IDs of the additional private subnets that have been created. |
 | <a name="output_additional_public_subnet_ids"></a> [additional\_public\_subnet\_ids](#output\_additional\_public\_subnet\_ids) | The IDs of the additional public subnets that have been created. |
+| <a name="output_bastion_host_private_ip"></a> [bastion\_host\_private\_ip](#output\_bastion\_host\_private\_ip) | n/a |
+| <a name="output_bastion_host_public_ip"></a> [bastion\_host\_public\_ip](#output\_bastion\_host\_public\_ip) | n/a |
+| <a name="output_bastion_host_security_group_id"></a> [bastion\_host\_security\_group\_id](#output\_bastion\_host\_security\_group\_id) | n/a |
+| <a name="output_bastion_host_ssh_user"></a> [bastion\_host\_ssh\_user](#output\_bastion\_host\_ssh\_user) | n/a |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the VPC. |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | The IDs of the main private subnets that have been created. |
 | <a name="output_public_subnet_ids"></a> [public\_subnet\_ids](#output\_public\_subnet\_ids) | The IDs of the main public subnets that have been created. |
