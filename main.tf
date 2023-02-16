@@ -125,7 +125,7 @@ resource "tls_private_key" "bastion" {
 resource "aws_key_pair" "bastion" {
   count = var.bastion_host_enabled ? 1 : 0
 
-  key_name   = "${var.name}-bastion"
+  key_name   = local.bastion_host_key_pair_name
   public_key = var.bastion_host_ssh_public_key != "" ? var.bastion_host_ssh_public_key : tls_private_key.bastion[0].public_key_openssh
 }
 

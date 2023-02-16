@@ -26,6 +26,11 @@ output "additional_public_subnet_ids" {
   ]
 }
 
+output "bastion_host_key_pair_name" {
+  description = "The name of the SSH key pair associated with the bastion host."
+  value       = var.bastion_host_enabled ? local.bastion_host_key_pair_name : ""
+}
+
 output "bastion_host_private_ip" {
   value = join("", module.bastion[*].private_ip)
 }
