@@ -133,8 +133,12 @@ module "bastion" {
   source  = "cloudposse/ec2-bastion-server/aws"
   version = "0.30.1"
 
+  ami_filter                  = { name = [var.bastion_host_ami_name_filter] }
+  ami_owners                  = var.bastion_host_ami_owners
+  ami                         = var.bastion_host_ami_id
   associate_public_ip_address = var.bastion_host_assign_public_ip
   enabled                     = var.bastion_host_enabled
+  instance_type               = var.bastion_host_instance_type
   key_name                    = aws_key_pair.bastion[0].key_name
   name                        = "${var.name}-bastion"
   security_groups             = var.bastion_host_extra_security_groups

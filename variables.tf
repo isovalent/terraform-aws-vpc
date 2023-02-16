@@ -44,6 +44,25 @@ variable "additional_public_subnets" {
   }))
 }
 
+variable "bastion_host_ami_name_filter" {
+  description = "The AMI filter to use for the bastion host's AMI."
+  type        = string
+  default     = "amzn2-ami-hvm-2.*-x86_64-ebs"
+
+}
+
+variable "bastion_host_ami_owners" {
+  description = "The list of owners used to select the AMI."
+  type        = list(string)
+  default     = ["amazon"]
+}
+
+variable "bastion_host_ami_id" {
+  type        = string
+  description = "The ID of the AIM to use for the instance. Setting this will ignore `bastion_host_ami_name_filter` and `bastion_host_ami_owners`."
+  default     = null
+}
+
 variable "bastion_host_assign_public_ip" {
   default     = false
   description = "Whether to assign a public IP address to the bastion host."
@@ -60,6 +79,12 @@ variable "bastion_host_extra_security_groups" {
   default     = []
   description = "A list of extra security groups to associate with the bastion host."
   type        = list(string)
+}
+
+variable "bastion_host_instance_type" {
+  type        = string
+  default     = "t2.micro"
+  description = "The instance type to use for the bastion host."
 }
 
 variable "bastion_host_ssh_public_key" {
