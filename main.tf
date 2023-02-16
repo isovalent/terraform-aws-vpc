@@ -130,6 +130,8 @@ resource "aws_key_pair" "bastion" {
 }
 
 module "bastion" {
+  count = var.bastion_host_enabled ? 1 : 0
+
   source  = "cloudposse/ec2-bastion-server/aws"
   version = "0.30.1"
 
