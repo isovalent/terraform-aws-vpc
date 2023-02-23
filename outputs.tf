@@ -19,6 +19,13 @@ output "additional_private_subnet_ids" {
   ]
 }
 
+output "additional_private_subnets_cidr_blocks" {
+  description = "The additional private subnets that have been created."
+  value = [
+    for k, v in aws_subnet.additional_private_subnets : v.cidr_block
+  ]
+}
+
 output "additional_public_subnet_ids" {
   description = "The IDs of the additional public subnets that have been created."
   value = [
