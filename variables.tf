@@ -81,6 +81,12 @@ variable "bastion_host_extra_security_groups" {
   type        = list(string)
 }
 
+variable "bastion_host_security_group_rules" {
+  default     = []
+  description = "A list of security group rules to apply to the bastion host."
+  type        = list(any)
+}
+
 variable "bastion_host_instance_type" {
   type        = string
   default     = "t2.micro"
