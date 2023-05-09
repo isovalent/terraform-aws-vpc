@@ -124,3 +124,9 @@ variable "tags" {
   description = "The tags to place on the VPC."
   type        = map(string)
 }
+
+variable "enable_ipv6" {
+  default     = false
+  description = "Whether to enable the ipv6 stack."
+  type        = bool
+}

@@ -33,6 +33,10 @@ module "vpc" {
   single_nat_gateway     = true                                        // Use a single NAT gateway as that's the simplest and also all we need.
   tags                   = var.tags                                    // Use the tags specified as a variable.
 
+  enable_ipv6                                    = var.enable_ipv6 // this will provide Amazon-provided IPv6 CIDR block which is a /56 block
+  public_subnet_assign_ipv6_address_on_creation  = var.enable_ipv6 // this will help the EC2 to get the IPV6 address when it boots
+  private_subnet_assign_ipv6_address_on_creation = var.enable_ipv6 // this will help the EC2 to get the IPV6 address when it boots
+
   // Create one private subnet per AZ (e.g. "10.1.0.0/24", "10.1.1.0/24", "10.1.2.0/24", ...).
   // This could surely have been made differently (possibly even sourced from a variable), but it suffices for the time being.
   private_subnets = [
@@ -63,6 +67,16 @@ module "vpc" {
       "type"                   = "public" // Required by AWS Load Balancer controller.
     },
   )
+  //This is needed when enabling the IPV6 but will not hurt when the IPV6 is not enabled.
+  private_subnet_ipv6_prefixes = [
+    for i, v in data.aws_availability_zones.available.names :
+    i
+  ]
+  public_subnet_ipv6_prefixes = [
+    for i, v in data.aws_availability_zones.available.names :
+    10 + i
+  ]
+
 }
 
 // Used to wait for the secondary CIDRs to be listed, as otherwise the AWS API will *sometimes* throw errors.
