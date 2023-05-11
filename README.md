@@ -58,6 +58,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_bastion_host_security_group_rules"></a> [bastion\_host\_security\_group\_rules](#input\_bastion\_host\_security\_group\_rules) | A list of security group rules to apply to the bastion host. | `list(any)` | `[]` | no |
 | <a name="input_bastion_host_ssh_public_key"></a> [bastion\_host\_ssh\_public\_key](#input\_bastion\_host\_ssh\_public\_key) | If specified, will be used as the public SSH key for the bastion host. | `string` | `""` | no |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR to be used for the VPC. | `string` | n/a | yes |
+| <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Whether to enable the ipv6 stack. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the VPC. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region in which to create the VPC. | `string` | n/a | yes |
 | <a name="input_secondary_cidr_blocks"></a> [secondary\_cidr\_blocks](#input\_secondary\_cidr\_blocks) | List of secondary CIDR blocks to use. | `list(string)` | `[]` | no |
