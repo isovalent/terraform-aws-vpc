@@ -26,7 +26,6 @@ module "vpc" {
   cidr                   = var.cidr                                    // Use the CIDR specified as a variable.
   enable_dns_hostnames   = true                                        // Enable DNS hostnames (required by EKS).
   enable_nat_gateway     = true                                        // Enable NAT gateway to enable outbound internet traffic from instances in a private subnet.
-  enable_vpn_gateway     = true                                        // Enable VPN gateway as it is useful in case we later want to create VPC peerings.
   name                   = var.name                                    // Use the name specified as a variable.
   one_nat_gateway_per_az = false                                       // Use a single NAT gateway as that's the simplest and also all we need.
   secondary_cidr_blocks  = var.secondary_cidr_blocks                   // Define secondary CIDR blocks.
