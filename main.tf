@@ -136,7 +136,7 @@ resource "tls_private_key" "bastion" {
 }
 
 resource "local_file" "private_key" {
-  count = var.bastion_host_enabled && var.bastion_host_ssh_public_key == "" ? 1 : 0
+  count           = var.bastion_host_enabled && var.bastion_host_ssh_public_key == "" ? 1 : 0
   content         = tls_private_key.bastion[0].private_key_pem
   filename        = "${var.name}-private-key.pem"
   file_permission = "0600"

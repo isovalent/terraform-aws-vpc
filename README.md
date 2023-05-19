@@ -17,6 +17,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.31.0 |
+| <a name="provider_local"></a> [local](#provider\_local) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | >= 3.1.1 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | < 4.0.0 |
 
@@ -36,6 +37,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | [aws_route_table_association.additional_public_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_subnet.additional_private_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_subnet.additional_public_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
+| [local_file.private_key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [null_resource.wait_for_secondary_cidrs](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [tls_private_key.bastion](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
@@ -55,7 +57,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_bastion_host_enabled"></a> [bastion\_host\_enabled](#input\_bastion\_host\_enabled) | Whether to create an EC2 instance in the VPC that can be used as a bastion host. | `bool` | `false` | no |
 | <a name="input_bastion_host_extra_security_groups"></a> [bastion\_host\_extra\_security\_groups](#input\_bastion\_host\_extra\_security\_groups) | A list of extra security groups to associate with the bastion host. | `list(string)` | `[]` | no |
 | <a name="input_bastion_host_instance_type"></a> [bastion\_host\_instance\_type](#input\_bastion\_host\_instance\_type) | The instance type to use for the bastion host. | `string` | `"t2.micro"` | no |
-| <a name="input_bastion_host_security_group_rules"></a> [bastion\_host\_security\_group\_rules](#input\_bastion\_host\_security\_group\_rules) | A list of security group rules to apply to the bastion host. | `list(any)` | `[]` | no |
+| <a name="input_bastion_host_security_group_rules"></a> [bastion\_host\_security\_group\_rules](#input\_bastion\_host\_security\_group\_rules) | A list of security group rules to apply to the bastion host. | `list(any)` | <pre>[<br>  {<br>    "cidr_blocks": [<br>      "0.0.0.0/0"<br>    ],<br>    "description": "Allow all outbound traffic",<br>    "from_port": 0,<br>    "protocol": -1,<br>    "to_port": 0,<br>    "type": "egress"<br>  },<br>  {<br>    "cidr_blocks": [<br>      "0.0.0.0/0"<br>    ],<br>    "description": "Allow all inbound to SSH",<br>    "from_port": 22,<br>    "protocol": "tcp",<br>    "to_port": 22,<br>    "type": "ingress"<br>  }<br>]</pre> | no |
 | <a name="input_bastion_host_ssh_public_key"></a> [bastion\_host\_ssh\_public\_key](#input\_bastion\_host\_ssh\_public\_key) | If specified, will be used as the public SSH key for the bastion host. | `string` | `""` | no |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR to be used for the VPC. | `string` | n/a | yes |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Whether to enable the ipv6 stack. | `bool` | `false` | no |
@@ -76,8 +78,11 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="output_bastion_host_security_group_id"></a> [bastion\_host\_security\_group\_id](#output\_bastion\_host\_security\_group\_id) | n/a |
 | <a name="output_bastion_host_ssh_user"></a> [bastion\_host\_ssh\_user](#output\_bastion\_host\_ssh\_user) | n/a |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the VPC. |
+| <a name="output_private_route_table_ids"></a> [private\_route\_table\_ids](#output\_private\_route\_table\_ids) | The IDs of the private route table that have been created. |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | The IDs of the main private subnets that have been created. |
+| <a name="output_public_route_table_ids"></a> [public\_route\_table\_ids](#output\_public\_route\_table\_ids) | The IDs of the public route table that have been created. |
 | <a name="output_public_subnet_ids"></a> [public\_subnet\_ids](#output\_public\_subnet\_ids) | The IDs of the main public subnets that have been created. |
+| <a name="output_vpc_ipv6_cidr_block"></a> [vpc\_ipv6\_cidr\_block](#output\_vpc\_ipv6\_cidr\_block) | The IDs of the private route table that have been created. |
 <!-- END_TF_DOCS -->
 
 ## License
