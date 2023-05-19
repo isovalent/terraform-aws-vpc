@@ -63,3 +63,17 @@ output "public_subnet_ids" {
   description = "The IDs of the main public subnets that have been created."
   value       = module.vpc.public_subnets
 }
+
+output "private_route_table_ids" {
+  description = "The IDs of the private route table that have been created."
+  value       = module.vpc.private_route_table_ids
+}
+
+output "public_route_table_ids" {
+  description = "The IDs of the public route table that have been created."
+  value       = module.vpc.public_route_table_ids
+}
+output "vpc_ipv6_cidr_block" {
+  description = "The IDs of the private route table that have been created."
+  value       = module.vpc.vpc_ipv6_cidr_block
+}
