@@ -74,6 +74,6 @@ output "public_route_table_ids" {
   value       = module.vpc.public_route_table_ids
 }
 output "vpc_ipv6_cidr_block" {
-  description = "The IDs of the private route table that have been created."
+  description = "The IPv6 CIDR block that have been used."
   value       = module.vpc.vpc_ipv6_cidr_block
 }
