@@ -20,7 +20,7 @@ data "aws_availability_zones" "available" {
 // The VPC itself, as well as main subnets.
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.18.1"
+  version = "5.0.0"
 
   azs                    = data.aws_availability_zones.available.names // Use all availability zones.
   cidr                   = var.cidr                                    // Use the CIDR specified as a variable.
