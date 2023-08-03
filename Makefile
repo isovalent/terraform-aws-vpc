@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-ROOT := $(git rev-parse --show-toplevel)
+ROOT := $$(git rev-parse --show-toplevel)
 
 .PHONY: docs
 
