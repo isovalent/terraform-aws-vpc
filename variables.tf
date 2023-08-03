@@ -142,6 +142,7 @@ variable "secondary_cidr_blocks" {
 }
 
 variable "tags" {
+  default     = {}
   description = "The tags to place on the VPC."
   type        = map(string)
 }
