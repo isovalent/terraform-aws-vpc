@@ -64,7 +64,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_name"></a> [name](#input\_name) | The name of the VPC. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region in which to create the VPC. | `string` | n/a | yes |
 | <a name="input_secondary_cidr_blocks"></a> [secondary\_cidr\_blocks](#input\_secondary\_cidr\_blocks) | List of secondary CIDR blocks to use. | `list(string)` | `[]` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | The tags to place on the VPC. | `map(string)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags to place on the VPC. | `map(string)` | n/a | yes |
 
 ## Outputs
 
