@@ -22,15 +22,16 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  azs                    = data.aws_availability_zones.available.names // Use all availability zones.
-  cidr                   = var.cidr                                    // Use the CIDR specified as a variable.
-  enable_dns_hostnames   = true                                        // Enable DNS hostnames (required by EKS).
-  enable_nat_gateway     = true                                        // Enable NAT gateway to enable outbound internet traffic from instances in a private subnet.
-  name                   = var.name                                    // Use the name specified as a variable.
-  one_nat_gateway_per_az = false                                       // Use a single NAT gateway as that's the simplest and also all we need.
-  secondary_cidr_blocks  = var.secondary_cidr_blocks                   // Define secondary CIDR blocks.
-  single_nat_gateway     = true                                        // Use a single NAT gateway as that's the simplest and also all we need.
-  tags                   = var.tags                                    // Use the tags specified as a variable.
+  azs                     = data.aws_availability_zones.available.names // Use all availability zones.
+  cidr                    = var.cidr                                    // Use the CIDR specified as a variable.
+  enable_dns_hostnames    = true                                        // Enable DNS hostnames (required by EKS).
+  enable_nat_gateway      = true                                        // Enable NAT gateway to enable outbound internet traffic from instances in a private subnet.
+  name                    = var.name                                    // Use the name specified as a variable.
+  one_nat_gateway_per_az  = false                                       // Use a single NAT gateway as that's the simplest and also all we need.
+  secondary_cidr_blocks   = var.secondary_cidr_blocks                   // Define secondary CIDR blocks.
+  single_nat_gateway      = true                                        // Use a single NAT gateway as that's the simplest and also all we need.
+  tags                    = var.tags                                    // Use the tags specified as a variable.
+  map_public_ip_on_launch = var.map_public_ip_on_launch                 // Map public IP on launch for instances in public subnets.
 
   enable_ipv6                                    = var.enable_ipv6 // this will provide Amazon-provided IPv6 CIDR block which is a /56 block
   public_subnet_assign_ipv6_address_on_creation  = var.enable_ipv6 // this will help the EC2 to get the IPV6 address when it boots

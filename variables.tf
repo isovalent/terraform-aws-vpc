@@ -151,3 +151,9 @@ variable "enable_ipv6" {
   description = "Whether to enable the ipv6 stack."
   type        = bool
 }
+
+variable "map_public_ip_on_launch" {
+  default     = false
+  description = "Whether to map public IPs on launch."
+  type        = bool
+}
