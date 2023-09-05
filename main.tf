@@ -20,18 +20,19 @@ data "aws_availability_zones" "available" {
 // The VPC itself, as well as main subnets.
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.18.1"
+  version = "5.0.0"
 
-  azs                    = data.aws_availability_zones.available.names // Use all availability zones.
-  cidr                   = var.cidr                                    // Use the CIDR specified as a variable.
-  enable_dns_hostnames   = true                                        // Enable DNS hostnames (required by EKS).
-  enable_nat_gateway     = true                                        // Enable NAT gateway to enable outbound internet traffic from instances in a private subnet.
-  enable_vpn_gateway     = true                                        // Enable VPN gateway as it is useful in case we later want to create VPC peerings.
-  name                   = var.name                                    // Use the name specified as a variable.
-  one_nat_gateway_per_az = false                                       // Use a single NAT gateway as that's the simplest and also all we need.
-  secondary_cidr_blocks  = var.secondary_cidr_blocks                   // Define secondary CIDR blocks.
-  single_nat_gateway     = true                                        // Use a single NAT gateway as that's the simplest and also all we need.
-  tags                   = var.tags                                    // Use the tags specified as a variable.
+  azs                     = data.aws_availability_zones.available.names // Use all availability zones.
+  cidr                    = var.cidr                                    // Use the CIDR specified as a variable.
+  enable_dns_hostnames    = true                                        // Enable DNS hostnames (required by EKS).
+  enable_nat_gateway      = true                                        // Enable NAT gateway to enable outbound internet traffic from instances in a private subnet.
+  enable_vpn_gateway      = true                                        // Enable VPN gateway as it is useful in case we later want to create VPC peerings.
+  name                    = var.name                                    // Use the name specified as a variable.
+  one_nat_gateway_per_az  = false                                       // Use a single NAT gateway as that's the simplest and also all we need.
+  secondary_cidr_blocks   = var.secondary_cidr_blocks                   // Define secondary CIDR blocks.
+  single_nat_gateway      = true                                        // Use a single NAT gateway as that's the simplest and also all we need.
+  tags                    = var.tags                                    // Use the tags specified as a variable.
+  map_public_ip_on_launch = true                                        // Enable public IP addresses for instances in public subnets.
 
   // Create one private subnet per AZ (e.g. "10.1.0.0/24", "10.1.1.0/24", "10.1.2.0/24", ...).
   // This could surely have been made differently (possibly even sourced from a variable), but it suffices for the time being.
