@@ -74,6 +74,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="output_additional_private_subnet_ids"></a> [additional\_private\_subnet\_ids](#output\_additional\_private\_subnet\_ids) | The IDs of the additional private subnets that have been created. |
 | <a name="output_additional_private_subnets_cidr_blocks"></a> [additional\_private\_subnets\_cidr\_blocks](#output\_additional\_private\_subnets\_cidr\_blocks) | The additional private subnets that have been created. |
 | <a name="output_additional_public_subnet_ids"></a> [additional\_public\_subnet\_ids](#output\_additional\_public\_subnet\_ids) | The IDs of the additional public subnets that have been created. |
+| <a name="output_bastion_host_key_pair_name"></a> [bastion\_host\_key\_pair\_name](#output\_bastion\_host\_key\_pair\_name) | The name of the SSH key pair associated with the bastion host. |
 | <a name="output_bastion_host_private_ip"></a> [bastion\_host\_private\_ip](#output\_bastion\_host\_private\_ip) | n/a |
 | <a name="output_bastion_host_public_ip"></a> [bastion\_host\_public\_ip](#output\_bastion\_host\_public\_ip) | n/a |
 | <a name="output_bastion_host_security_group_id"></a> [bastion\_host\_security\_group\_id](#output\_bastion\_host\_security\_group\_id) | n/a |
