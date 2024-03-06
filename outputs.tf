@@ -82,3 +82,8 @@ output "vpc_ipv6_cidr_block" {
   description = "The IPv6 CIDR block that have been used."
   value       = module.vpc.vpc_ipv6_cidr_block
 }
+
+output "vpc_cidr_block" {
+  description = "The IPv4 CIDR block that have been used."
+  value       = module.vpc.vpc_cidr_block
+}
