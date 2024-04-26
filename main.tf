@@ -167,7 +167,7 @@ module "bastion" {
   security_groups             = var.bastion_host_extra_security_groups
   security_group_rules        = var.bastion_host_security_group_rules
   ssm_enabled                 = true
-  subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
+  subnets                     = var.bastion_subnet_ids != null ? var.bastion_subnet_ids : var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
   tags                        = var.tags
   vpc_id                      = module.vpc.vpc_id
 }

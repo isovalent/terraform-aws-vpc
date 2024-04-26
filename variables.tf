@@ -157,3 +157,9 @@ variable "map_public_ip_on_launch" {
   description = "Whether to map public IPs on launch."
   type        = bool
 }
+
+variable "bastion_subnet_ids" {
+  default     = []
+  description = "The IDs of the subnets in which to place the bastion host."
+  type        = list(string)
+}
