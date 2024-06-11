@@ -120,6 +120,18 @@ variable "bastion_host_ssh_public_key" {
   type        = string
 }
 
+variable "bastion_host_user_data" {
+  default     = []
+  description = "The user data to use for the bastion host."
+  type        = string
+}
+
+variable "bastion_host_user_data_base64" {
+  default     = ""
+  description = "The user data to use for the bastion host, base64 encoded."
+  type        = string
+}
+
 variable "cidr" {
   description = "The CIDR to be used for the VPC."
   type        = string

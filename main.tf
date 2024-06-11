@@ -170,4 +170,6 @@ module "bastion" {
   subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
   tags                        = var.tags
   vpc_id                      = module.vpc.vpc_id
+  user_data                   = var.bastion_host_user_data
+  user_data_base64            = var.bastion_host_user_data_base64
 }
