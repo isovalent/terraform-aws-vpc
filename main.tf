@@ -154,7 +154,7 @@ module "bastion" {
   count = var.bastion_host_enabled ? 1 : 0
 
   source  = "cloudposse/ec2-bastion-server/aws"
-  version = "0.30.1"
+  version = "0.31.0"
 
   ami_filter                  = { name = [var.bastion_host_ami_name_filter] }
   ami_owners                  = var.bastion_host_ami_owners
