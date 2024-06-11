@@ -123,7 +123,7 @@ variable "bastion_host_ssh_public_key" {
 variable "bastion_host_user_data" {
   default     = []
   description = "The user data to use for the bastion host."
-  type        = string
+  type        = list(string)
 }
 
 variable "bastion_host_user_data_base64" {
