@@ -25,7 +25,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_bastion"></a> [bastion](#module\_bastion) | cloudposse/ec2-bastion-server/aws | 0.30.1 |
+| <a name="module_bastion"></a> [bastion](#module\_bastion) | cloudposse/ec2-bastion-server/aws | 0.31.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 5.0.0 |
 
 ## Resources
@@ -59,6 +59,8 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_bastion_host_instance_type"></a> [bastion\_host\_instance\_type](#input\_bastion\_host\_instance\_type) | The instance type to use for the bastion host. | `string` | `"t2.micro"` | no |
 | <a name="input_bastion_host_security_group_rules"></a> [bastion\_host\_security\_group\_rules](#input\_bastion\_host\_security\_group\_rules) | A list of security group rules to apply to the bastion host. | `list(any)` | <pre>[<br>  {<br>    "cidr_blocks": [<br>      "0.0.0.0/0"<br>    ],<br>    "description": "Allow all outbound traffic",<br>    "from_port": 0,<br>    "protocol": -1,<br>    "to_port": 0,<br>    "type": "egress"<br>  },<br>  {<br>    "cidr_blocks": [<br>      "0.0.0.0/0"<br>    ],<br>    "description": "Allow all inbound to SSH",<br>    "from_port": 22,<br>    "protocol": "tcp",<br>    "to_port": 22,<br>    "type": "ingress"<br>  }<br>]</pre> | no |
 | <a name="input_bastion_host_ssh_public_key"></a> [bastion\_host\_ssh\_public\_key](#input\_bastion\_host\_ssh\_public\_key) | If specified, will be used as the public SSH key for the bastion host. | `string` | `""` | no |
+| <a name="input_bastion_host_user_data"></a> [bastion\_host\_user\_data](#input\_bastion\_host\_user\_data) | The user data to use for the bastion host. | `string` | `[]` | no |
+| <a name="input_bastion_host_user_data_base64"></a> [bastion\_host\_user\_data\_base64](#input\_bastion\_host\_user\_data\_base64) | The user data to use for the bastion host, base64 encoded. | `string` | `""` | no |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR to be used for the VPC. | `string` | n/a | yes |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Whether to enable the ipv6 stack. | `bool` | `false` | no |
 | <a name="input_map_public_ip_on_launch"></a> [map\_public\_ip\_on\_launch](#input\_map\_public\_ip\_on\_launch) | Whether to map public IPs on launch. | `bool` | `false` | no |

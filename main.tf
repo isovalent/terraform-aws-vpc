@@ -154,7 +154,7 @@ module "bastion" {
   count = var.bastion_host_enabled ? 1 : 0
 
   source  = "cloudposse/ec2-bastion-server/aws"
-  version = "0.30.1"
+  version = "0.31.0"
 
   ami_filter                  = { name = [var.bastion_host_ami_name_filter] }
   ami_owners                  = var.bastion_host_ami_owners
@@ -170,4 +170,6 @@ module "bastion" {
   subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
   tags                        = var.tags
   vpc_id                      = module.vpc.vpc_id
+  user_data                   = var.bastion_host_user_data
+  user_data_base64            = var.bastion_host_user_data_base64
 }
