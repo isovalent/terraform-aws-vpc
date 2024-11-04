@@ -12,6 +12,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+variable "availability_zones" {
+  # Usage: -var 'availability_zones=["us-east-1a"]'
+  description = <<-EOT
+    List of availability zone names that subnets can get deployed into.
+      If not provided, defaults to all AZs for the region.
+  EOT
+  type        = list(string)
+  default     = []
+}
+
 variable "additional_private_subnet_tags" {
   description = "Additional tags for the private subnets"
   type        = map(string)
