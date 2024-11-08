@@ -26,7 +26,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bastion"></a> [bastion](#module\_bastion) | cloudposse/ec2-bastion-server/aws | 0.31.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 5.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 5.15.0 |
 
 ## Resources
 
