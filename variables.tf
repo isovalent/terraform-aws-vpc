@@ -142,6 +142,12 @@ variable "bastion_host_user_data_base64" {
   type        = string
 }
 
+variable "bastion_host_root_block_device_volume_size" {
+  default     = 8
+  description = "The size of the root block device volume for the bastion host."
+  type        = number
+}
+
 variable "cidr" {
   description = "The CIDR to be used for the VPC."
   type        = string

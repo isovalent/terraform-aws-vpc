@@ -154,22 +154,24 @@ module "bastion" {
   count = var.bastion_host_enabled ? 1 : 0
 
   source  = "cloudposse/ec2-bastion-server/aws"
-  version = "0.31.0"
+  version = "0.31.1"
 
-  ami_filter                  = { name = [var.bastion_host_ami_name_filter] }
-  ami_owners                  = var.bastion_host_ami_owners
-  ami                         = var.bastion_host_ami_id
-  associate_public_ip_address = var.bastion_host_assign_public_ip
-  enabled                     = var.bastion_host_enabled
-  instance_type               = var.bastion_host_instance_type
-  key_name                    = aws_key_pair.bastion[0].key_name
-  name                        = "${var.name}-bastion"
-  security_groups             = var.bastion_host_extra_security_groups
-  security_group_rules        = var.bastion_host_security_group_rules
-  ssm_enabled                 = true
-  subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
-  tags                        = var.tags
-  vpc_id                      = module.vpc.vpc_id
-  user_data                   = var.bastion_host_user_data
-  user_data_base64            = var.bastion_host_user_data_base64
+  ami_filter                    = { name = [var.bastion_host_ami_name_filter] }
+  ami_owners                    = var.bastion_host_ami_owners
+  ami                           = var.bastion_host_ami_id
+  associate_public_ip_address   = var.bastion_host_assign_public_ip
+  enabled                       = var.bastion_host_enabled
+  instance_type                 = var.bastion_host_instance_type
+  key_name                      = aws_key_pair.bastion[0].key_name
+  name                          = "${var.name}-bastion"
+  security_groups               = var.bastion_host_extra_security_groups
+  security_group_rules          = var.bastion_host_security_group_rules
+  ssm_enabled                   = true
+  subnets                       = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
+  tags                          = var.tags
+  vpc_id                        = module.vpc.vpc_id
+  user_data                     = var.bastion_host_user_data
+  user_data_base64              = var.bastion_host_user_data_base64
+  root_block_device_volume_size = var.bastion_host_root_block_device_volume_size
+
 }
