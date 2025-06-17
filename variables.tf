@@ -92,30 +92,14 @@ variable "bastion_host_extra_security_groups" {
 }
 
 variable "bastion_host_security_group_rules" {
-  default = [
-    {
-      "cidr_blocks" : [
-        "0.0.0.0/0"
-      ],
-      "description" : "Allow all outbound traffic",
-      "from_port" : 0,
-      "protocol" : -1,
-      "to_port" : 0,
-      "type" : "egress"
-    },
-    {
-      "cidr_blocks" : [
-        "0.0.0.0/0"
-      ],
-      "description" : "Allow all inbound to SSH",
-      "from_port" : 22,
-      "protocol" : "tcp",
-      "to_port" : 22,
-      "type" : "ingress"
-    }
-  ]
+  default     = []
   description = "A list of security group rules to apply to the bastion host."
   type        = list(any)
+}
+
+variable "access_ip_addresses" {
+  description = "The list of IP address specified will be able to access the bastion."
+  type        = list(string)
 }
 
 variable "bastion_host_instance_type" {
