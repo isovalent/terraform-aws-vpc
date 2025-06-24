@@ -46,7 +46,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_ip_addresses"></a> [access\_ip\_addresses](#input\_access\_ip\_addresses) | The list of IP address specified will be able to access the bastion. | `list(string)` | n/a | yes |
+| <a name="input_access_ip_addresses"></a> [access\_ip\_addresses](#input\_access\_ip\_addresses) | The list of IP address specified will be able to access the bastion. | `list(string)` | `[]` | no |
 | <a name="input_additional_private_subnet_tags"></a> [additional\_private\_subnet\_tags](#input\_additional\_private\_subnet\_tags) | Additional tags for the private subnets | `map(string)` | `{}` | no |
 | <a name="input_additional_private_subnets"></a> [additional\_private\_subnets](#input\_additional\_private\_subnets) | Additional private subnets to create. | <pre>list(object({<br/>    availability_zone = string<br/>    cidr              = string<br/>    tags              = map(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_additional_public_subnet_tags"></a> [additional\_public\_subnet\_tags](#input\_additional\_public\_subnet\_tags) | Additional tags for the public subnets | `map(string)` | `{}` | no |

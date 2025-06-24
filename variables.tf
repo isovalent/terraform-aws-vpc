@@ -98,8 +98,13 @@ variable "bastion_host_security_group_rules" {
 }
 
 variable "access_ip_addresses" {
+  default     = []
   description = "The list of IP address specified will be able to access the bastion."
   type        = list(string)
+  validation {
+    condition     = !var.bastion_host_enabled || length(var.access_ip_addresses) > 0
+    error_message = "At least one IP address must be specified when bastion host is enabled."
+  }
 }
 
 variable "bastion_host_instance_type" {
