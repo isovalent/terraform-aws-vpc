@@ -16,10 +16,10 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.31.0 |
-| <a name="provider_local"></a> [local](#provider\_local) | n/a |
-| <a name="provider_null"></a> [null](#provider\_null) | >= 3.1.1 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | < 4.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.99.1 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.5.3 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
 
 ## Modules
 
@@ -63,6 +63,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 | <a name="input_bastion_host_ssh_public_key"></a> [bastion\_host\_ssh\_public\_key](#input\_bastion\_host\_ssh\_public\_key) | If specified, will be used as the public SSH key for the bastion host. | `string` | `""` | no |
 | <a name="input_bastion_host_user_data"></a> [bastion\_host\_user\_data](#input\_bastion\_host\_user\_data) | The user data to use for the bastion host. | `list(string)` | `[]` | no |
 | <a name="input_bastion_host_user_data_base64"></a> [bastion\_host\_user\_data\_base64](#input\_bastion\_host\_user\_data\_base64) | The user data to use for the bastion host, base64 encoded. | `string` | `""` | no |
+| <a name="input_bastion_instance_profile"></a> [bastion\_instance\_profile](#input\_bastion\_instance\_profile) | A pre-defined profile to attach to the instance | `string` | n/a | yes |
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | The CIDR to be used for the VPC. | `string` | n/a | yes |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Whether to enable the ipv6 stack. | `bool` | `false` | no |
 | <a name="input_map_public_ip_on_launch"></a> [map\_public\_ip\_on\_launch](#input\_map\_public\_ip\_on\_launch) | Whether to map public IPs on launch. | `bool` | `false` | no |

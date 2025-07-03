@@ -162,6 +162,7 @@ module "bastion" {
   associate_public_ip_address = var.bastion_host_assign_public_ip
   enabled                     = var.bastion_host_enabled
   instance_type               = var.bastion_host_instance_type
+  instance_profile            = var.bastion_instance_profile
   key_name                    = aws_key_pair.bastion[0].key_name
   name                        = "${var.name}-bastion"
   security_groups             = var.bastion_host_extra_security_groups
