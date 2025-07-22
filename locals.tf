@@ -3,7 +3,7 @@ locals {
   availability_zones         = length(var.availability_zones) > 0 ? var.availability_zones : data.aws_availability_zones.available.names
   bastion_host_security_group_rules = [
     {
-      "cidr_blocks" : var.access_ip_addresses,
+      "cidr_blocks" : ["0.0.0.0/0"],
       "description" : "Allow all outbound traffic",
       "from_port" : 0,
       "protocol" : -1,
