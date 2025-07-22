@@ -166,7 +166,7 @@ module "bastion" {
   key_name                    = aws_key_pair.bastion[0].key_name
   name                        = "${var.name}-bastion"
   security_groups             = var.bastion_host_extra_security_groups
-  security_group_rules        = local.bastion_host_security_group_rules
+  security_group_rules        = concat(local.bastion_host_security_group_rules, var.bastion_host_security_group_rules)
   ssm_enabled                 = true
   subnets                     = var.bastion_host_assign_public_ip ? module.vpc.public_subnets : module.vpc.private_subnets
   tags                        = var.tags
