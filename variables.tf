@@ -120,6 +120,7 @@ variable "bastion_host_ssh_public_key" {
 }
 
 variable "bastion_instance_profile" {
+  default     = ""
   description = "A pre-defined profile to attach to the instance"
   type        = string
 }
