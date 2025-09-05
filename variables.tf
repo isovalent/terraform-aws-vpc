@@ -102,7 +102,7 @@ variable "access_ip_addresses" {
   description = "The list of IP address specified will be able to access the bastion."
   type        = list(string)
   validation {
-    condition     = !var.bastion_host_enabled || length(var.access_ip_addresses) > 0
+    condition     = !contains(var.access_ip_addresses, "0.0.0.0/0")
     error_message = "At least one IP address must be specified when bastion host is enabled."
   }
 }
