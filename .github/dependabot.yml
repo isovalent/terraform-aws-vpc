@@ -3,9 +3,22 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 5
     rebase-strategy: "disabled"
     labels:
       - ci/dependabot
       - kind/enhancement
+    ignore:
+      - dependency-name: "hashicorp/aws"
+        update-types: 
+        - "version-update:semver-minor"
+        - "version-update:semver-patch"
+      - dependency-name: "hashicorp/null"
+        update-types: 
+        - "version-update:semver-minor"
+        - "version-update:semver-patch"
+      - dependency-name: "hashicorp/tls"
+        update-types: 
+        - "version-update:semver-minor"
+        - "version-update:semver-patch"
