@@ -41,7 +41,7 @@ module "vpc" {
   // This could surely have been made differently (possibly even sourced from a variable), but it suffices for the time being.
   private_subnets = [
     for i, v in local.availability_zones :
-    cidrsubnet(var.cidr, 8, i)
+    cidrsubnet(var.cidr, 12, i)
   ]
   // Tag the private subnets adequately.
   private_subnet_tags = merge(
