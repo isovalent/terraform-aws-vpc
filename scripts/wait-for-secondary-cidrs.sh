@@ -19,7 +19,7 @@ set -euxo pipefail
 AWS_DEFAULT_OUTPUT=json
 export AWS_DEFAULT_OUTPUT
 
-while (( $(aws ec2 describe-vpcs --vpc-ids "${1}" --region "${2}" | jq -e '.Vpcs[].CidrBlockAssociationSet[].CidrBlock' | wc -l | xargs) < "${3}" ));
+while (( $(aws ec2 describe-vpcs --vpc-ids "${1}" --region "${2}" | jq -e '.Vpcs[].CidrBlockAssociationSet[] | select(.CidrBlockState.State == "associated") | .CidrBlock' | wc -l | xargs) < "${3}" ));
 do
   sleep 1;
 done
