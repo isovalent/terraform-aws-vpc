@@ -173,3 +173,8 @@ variable "map_public_ip_on_launch" {
   description = "Whether to map public IPs on launch."
   type        = bool
 }
+
+variable "aws_profile" {
+  description = "AWS Profile for cli"
+  type        = string
+}
