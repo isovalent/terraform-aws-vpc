@@ -82,7 +82,7 @@ module "vpc" {
 // Used to wait for the secondary CIDRs to be listed, as otherwise the AWS API will *sometimes* throw errors.
 resource "null_resource" "wait_for_secondary_cidrs" {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/wait-for-secondary-cidrs.sh ${module.vpc.vpc_id} ${var.region} ${1 + length(var.secondary_cidr_blocks)}"
+    command = "${path.module}/scripts/wait-for-secondary-cidrs.sh ${module.vpc.vpc_id} ${var.region} ${1 + length(var.secondary_cidr_blocks)} ${var.aws_profile}"
   }
 }
 

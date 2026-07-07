@@ -6,7 +6,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.0 |
@@ -15,23 +15,23 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
-| <a name="provider_local"></a> [local](#provider\_local) | n/a |
-| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.99.1 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.5.3 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_bastion"></a> [bastion](#module\_bastion) | cloudposse/ec2-bastion-server/aws | 0.31.2 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 6.4.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_key_pair.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_route_table_association.additional_private_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_route_table_association.additional_public_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
@@ -45,13 +45,14 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_access_ip_addresses"></a> [access\_ip\_addresses](#input\_access\_ip\_addresses) | The list of IP address specified will be able to access the bastion. | `list(string)` | `[]` | no |
 | <a name="input_additional_private_subnet_tags"></a> [additional\_private\_subnet\_tags](#input\_additional\_private\_subnet\_tags) | Additional tags for the private subnets | `map(string)` | `{}` | no |
 | <a name="input_additional_private_subnets"></a> [additional\_private\_subnets](#input\_additional\_private\_subnets) | Additional private subnets to create. | <pre>list(object({<br/>    availability_zone = string<br/>    cidr              = string<br/>    tags              = map(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_additional_public_subnet_tags"></a> [additional\_public\_subnet\_tags](#input\_additional\_public\_subnet\_tags) | Additional tags for the public subnets | `map(string)` | `{}` | no |
 | <a name="input_additional_public_subnets"></a> [additional\_public\_subnets](#input\_additional\_public\_subnets) | Additional public subnets to create. | <pre>list(object({<br/>    availability_zone = string<br/>    cidr              = string<br/>    tags              = map(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | List of availability zone names that subnets can get deployed into.<br/>  If not provided, defaults to all AZs for the region. | `list(string)` | `[]` | no |
+| <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | AWS Profile for cli | `string` | n/a | yes |
 | <a name="input_bastion_host_ami_id"></a> [bastion\_host\_ami\_id](#input\_bastion\_host\_ami\_id) | The ID of the AIM to use for the instance. Setting this will ignore `bastion_host_ami_name_filter` and `bastion_host_ami_owners`. | `string` | `null` | no |
 | <a name="input_bastion_host_ami_name_filter"></a> [bastion\_host\_ami\_name\_filter](#input\_bastion\_host\_ami\_name\_filter) | The AMI filter to use for the bastion host's AMI. | `string` | `"amzn2-ami-hvm-2.*-x86_64-ebs"` | no |
 | <a name="input_bastion_host_ami_owners"></a> [bastion\_host\_ami\_owners](#input\_bastion\_host\_ami\_owners) | The list of owners used to select the AMI. | `list(string)` | <pre>[<br/>  "amazon"<br/>]</pre> | no |
@@ -75,7 +76,7 @@ An opinionated Terraform module that can be used to create and manage an VPC in 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_additional_private_subnet_ids"></a> [additional\_private\_subnet\_ids](#output\_additional\_private\_subnet\_ids) | The IDs of the additional private subnets that have been created. |
 | <a name="output_additional_private_subnets_cidr_blocks"></a> [additional\_private\_subnets\_cidr\_blocks](#output\_additional\_private\_subnets\_cidr\_blocks) | The additional private subnets that have been created. |
 | <a name="output_additional_public_subnet_ids"></a> [additional\_public\_subnet\_ids](#output\_additional\_public\_subnet\_ids) | The IDs of the additional public subnets that have been created. |
